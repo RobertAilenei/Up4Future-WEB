@@ -8,13 +8,20 @@ public class Investor extends Entitate {
     private String investorPassword;
     private float investorMoney;
 
-    public Investor() {
-        super(-1);
-        this.investorName = null;
-        this.investorAge = 0;
-        this.investorEmail = null;
-        this.investorPassword = null;
-        this.investorMoney = 0;
+    /*
+        * Exista deja un contructor implicit (fara parametrii) in Java, astfel, nu mai e nevoie sa declaram noi unul nou.
+
+        * Sa incercam, ca metodele care nu sunt folosite, sa nu le avem ca si bucati de cod implementate, pentru ca ocupa spatiu si
+          pot duce la confuzii in cod (exemplu: SETT-ERI care sunt utilizati, sau IMPORT-URI).
+     */
+
+    public Investor(int id, String investorName, int investorAge, String investorEmail , String investorPassword, float investorMoney) {
+        super(id);
+        this.investorName = investorName;
+        this.investorAge = investorAge;
+        this.investorEmail = investorEmail;
+        this.investorPassword = investorPassword;
+        this.investorMoney = investorMoney;
     }
 
     public String getInvestorName() {
@@ -24,41 +31,16 @@ public class Investor extends Entitate {
         return investorAge;
     }
 
-    public void setInvestorAge(int investorAge) {
-        this.investorAge = investorAge;
-    }
-
     public String getInvestorEmail() {
         return investorEmail;
-    }
-
-    public void setInvestorEmail(String investorEmail) {
-        this.investorEmail = investorEmail;
     }
 
     public String getInvestorPassword() {
         return investorPassword;
     }
 
-    public void setInvestorPassword(String investorPassword) {
-        this.investorPassword = investorPassword;
-    }
-
     public float getInvestorMoney() {
         return investorMoney;
-    }
-
-    public void setInvestorMoney(float investorMoney) {
-        this.investorMoney = investorMoney;
-    }
-
-    public Investor(int id, String investorName, int investorAge, String investorEmail , String investorPassword, float investorMoney) {
-        super(id);
-        this.investorName = investorName;
-        this.investorAge = investorAge;
-        this.investorEmail = investorEmail;
-        this.investorPassword = investorPassword;
-        this.investorMoney = investorMoney;
     }
 
     @Override
