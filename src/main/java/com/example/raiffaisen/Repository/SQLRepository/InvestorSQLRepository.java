@@ -11,8 +11,8 @@ import java.util.Iterator;
 
 public class InvestorSQLRepository<T extends Entitate> extends GenericRepository<Investor> implements AutoCloseable {
     /**
-     * Repository pentru entitatea Investor folosind SQL
-     */
+     * Repository pentru entitatea Investor folosind SQLite
+     **/
     private static final String JDBC_URL =
             "jdbc:sqlite:Investor.db";  // Protocol:sqlite:loculUndeAvemDB
 
@@ -33,13 +33,13 @@ public class InvestorSQLRepository<T extends Entitate> extends GenericRepository
         public void add(Investor investor) throws RepositoryException {
             // 1. Adaugat in baza de date
             // PreparedStatement (impotriva SQL Injection)
-            // 'INSERT INTO Domain.Masina VALUES (?,?,?,...)'
+            // 'INSERT INTO Domain.Investor VALUES (?,?,?,...)'
             // 2. Daca nu avem exceptii, adaugat in data
 
             System.out.println("Adding an Investor");
 
             try {
-                try (PreparedStatement statement = conn.prepareStatement("INSERT INTO Investor VALUES (?, ?)")) {
+                try (PreparedStatement statement = conn.prepareStatement("INSERT INTO Investor VALUES (?, ?, ?, ?, ?, ?)")) {
                     statement.setInt(1, investor.getId());
                     statement.setString(2, investor.getInvestorName());
                     statement.setInt(3,investor.getInvestorAge());
@@ -65,7 +65,7 @@ public class InvestorSQLRepository<T extends Entitate> extends GenericRepository
                     super.delete(ID);
                     statement.executeUpdate();
 
-                    // FIXME - Trebuie stearsa Investitorul cu Id-ul = ID, fara sa mai luam toate masinile din Baza de date mereu si mereu
+                    // FIXME - Trebuie sters Investitorul cu Id-ul = ID, fara sa mai luam toate masinile din Baza de date mereu si mereu
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -73,13 +73,13 @@ public class InvestorSQLRepository<T extends Entitate> extends GenericRepository
         }
 
         @Override
-        public void update(Investor investor) throws RepositoryException {
+        public void update(Investor investor) {
             try {
-                String updateSql = "UPDATE Investor SET name = ? WHERE id = ?";
+                String updateSql = "UPDATE Investor SET name = ? SET age = ? SET email = ? SET password = ? SET money = ? WHERE id = ?";
 
                 try (PreparedStatement statement = conn.prepareStatement(updateSql)) {
-                    statement.setString(1, investor.getInvestorName());
-                    statement.setInt(2, investor.getId());
+                    statement.setInt(1, investor.getId());
+                    statement.setString(2, investor.getInvestorName());
                     statement.setInt(3,investor.getInvestorAge());
                     statement.setString(4,investor.getInvestorEmail());
                     statement.setString(5,investor.getInvestorPassword());

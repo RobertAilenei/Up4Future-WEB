@@ -1,8 +1,8 @@
 package com.example.raiffaisen.Service;
 
 import com.example.raiffaisen.Domain.Entitate;
+import com.example.raiffaisen.Domain.Investor;
 import com.example.raiffaisen.Repository.ExceptionRepository.RepositoryException;
-import com.example.raiffaisen.Repository.GenericRepository;
 import com.example.raiffaisen.Repository.IRepository;
 
 import java.util.List;

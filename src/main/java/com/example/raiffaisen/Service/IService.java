@@ -1,5 +1,6 @@
 package com.example.raiffaisen.Service;
 
+import com.example.raiffaisen.Domain.Investor;
 import com.example.raiffaisen.Repository.ExceptionRepository.RepositoryException;
 
 import java.util.List;

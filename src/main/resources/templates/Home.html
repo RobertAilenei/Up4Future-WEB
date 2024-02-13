@@ -7,10 +7,12 @@
     <title>Home</title>
 </head>
 <body>
-<h2>Welcome to Startup Finance!</h2>
-<p>Choose your role:</p>
-<a th:href="@{/investor}">Investor</a>
-<br>
-<a th:href="@{/startup}">Startup</a>
+    <h2>Welcome to Startup Finance!</h2>
+        <a th:href="@{/}">Home-Page</a>
+        <h1 th:text="${message}">Mesaj de fallback</h1>
+    <p>Choose your role:</p>
+    <a th:href="@{/investor}">Investor</a>
+    <br>
+    <a th:href="@{/startup}">Startup</a>
 </body>
 </html>
