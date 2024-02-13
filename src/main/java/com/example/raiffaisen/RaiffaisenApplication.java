@@ -2,7 +2,6 @@ package com.example.raiffaisen;
 
 import com.example.raiffaisen.Domain.Investor;
 import com.example.raiffaisen.Domain.Startup;
-import com.example.raiffaisen.Repository.ExceptionRepository.RepositoryException;
 import com.example.raiffaisen.Repository.IRepository;
 import com.example.raiffaisen.Repository.SQLRepository.InvestorSQLRepository;
 import com.example.raiffaisen.Repository.SQLRepository.StartupSQLRepository;
@@ -15,13 +14,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RaiffaisenApplication {
 
 
-    public static void main(String[] args) throws RepositoryException {
+    public static void main(String[] args) {
         SpringApplication.run(RaiffaisenApplication.class, args);
 
         IRepository<Investor> investorSQLRepository = new InvestorSQLRepository<Investor>();
         IService<Investor> investorService = new Service<>(investorSQLRepository);
 
-        IRepository<Startup> startupSQLRepository = new StartupSQLRepository();
+        IRepository<Startup> startupSQLRepository = new StartupSQLRepository<>();
         IService<Startup> startupService = new Service<>(startupSQLRepository);
 
 //        investorService.add(new Investor(1, "Investitor1"));
