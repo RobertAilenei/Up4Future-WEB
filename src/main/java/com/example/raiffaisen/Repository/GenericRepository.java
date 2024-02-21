@@ -4,11 +4,13 @@ package com.example.raiffaisen.Repository;
 import com.example.raiffaisen.Domain.Entitate;
 import com.example.raiffaisen.Repository.ExceptionRepository.DuplicateObjectException;
 import com.example.raiffaisen.Repository.ExceptionRepository.RepositoryException;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Repository
 public class GenericRepository<T extends Entitate> implements IRepository<T> {
     /*protected*/public List<T> entitati = new ArrayList<>();
 
