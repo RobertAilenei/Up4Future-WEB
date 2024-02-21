@@ -7,6 +7,7 @@ import com.example.raiffaisen.Repository.IRepository;
 
 import java.util.List;
 
+@org.springframework.stereotype.Service
 public class Service<T extends Entitate> implements IService<T> {
     private IRepository<T> repoGeneric;
 

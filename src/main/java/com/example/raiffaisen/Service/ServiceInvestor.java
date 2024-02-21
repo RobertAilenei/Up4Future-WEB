@@ -3,11 +3,14 @@ package com.example.raiffaisen.Service;
 import com.example.raiffaisen.Domain.Investor;
 import com.example.raiffaisen.Repository.ExceptionRepository.RepositoryException;
 import com.example.raiffaisen.Repository.IRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ServiceInvestor extends Service<Investor> {
+@org.springframework.stereotype.Service
+public class ServiceInvestor extends Service<Investor>
+{
 
     public ServiceInvestor(IRepository<Investor> Repository) {
         super(Repository);
@@ -23,11 +26,15 @@ public class ServiceInvestor extends Service<Investor> {
     public Investor findInvestorByEmailPassword(String email, String password) {
         List<Investor> entities = super.getAllEntities();
 
-        for (Investor entity : entities) {
+        for (Investor entity : entities)
             if (Objects.equals(entity.getInvestorEmail(), email) && Objects.equals(entity.getInvestorPassword(), password)) {
-                return entity; // Returnam obiectul de tip Investor
+                {
+                    System.out.println("Am gasit investitorul");
+                    return entity; // Returnam obiectul de tip Investor}
             }
-        }
+
+    }
+        System.out.println("NU am gasit investitorul asta");
         return null;
     }
 

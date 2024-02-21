@@ -1,6 +1,11 @@
 package com.example.raiffaisen.Domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 // Investor.java
+@Entity
 public class Investor extends Entitate {
     private String investorName;
     private int investorAge;
@@ -15,6 +20,10 @@ public class Investor extends Entitate {
           pot duce la confuzii in cod (exemplu: SETT-ERI care sunt utilizati, sau IMPORT-URI).
      */
 
+    public Investor(int id) {
+        super(id);
+    }
+
     public Investor(int id, String investorName, int investorAge, String investorEmail , String investorPassword, float investorMoney) {
         super(id);
         this.investorName = investorName;
@@ -23,6 +32,8 @@ public class Investor extends Entitate {
         this.investorPassword = investorPassword;
         this.investorMoney = investorMoney;
     }
+
+    public Investor() {}
 
     public String getInvestorName() {
         return investorName;
