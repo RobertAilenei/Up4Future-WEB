@@ -43,7 +43,6 @@ public class InvestorController {
 @RestController
 @RequestMapping("/investors")
 class ViewController {
-
     @GetMapping("/login")
     public String showLoginForm() {
         return "login page unde ar trb sa apara ";
